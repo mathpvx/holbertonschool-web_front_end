@@ -1,0 +1,15 @@
+$size12: 12px;
+$size14: 14px;
+$size16: 16px;
+
+body {
+	font-size: $size14;
+
+	h1 {
+		font-size: $size16;
+
+		&.smaller {
+			font-size: $size12;
+		}
+	}
+}
