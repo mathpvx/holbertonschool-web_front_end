@@ -1,0 +1,17 @@
+$size: 12px;
+$text-color: #FF0000;
+$text-color2: #00FF00;
+
+.info {
+	font-size: $size;
+}
+
+.success {
+	@extend .info;
+	color: $text-color2 ;
+}
+
+.warning {
+	@extend .info;
+	color: $text-color ;
+}
