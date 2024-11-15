@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<!-- Meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+	<!-- Title and description -->
+	<title>Holberton - Web Stack - Bootstrap</title>
+	<meta name="description" content="Bootstrap is a free and open-source CSS framework" />
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+	<!-- jQuery and Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<!-- Main content container -->
+	<div class="container-lg p-5">
+		<!-- Row for each card -->
+		<div class="row">
+			<!-- Card 1 -->
+			<div class="col-sm-4 col-12 mt-4">
+				<div class="card">
+					<!-- Card header -->
+					<div class="card-header">Coding</div>
+					<!-- Card image -->
+					<img class="card-img-top" src="https://via.placeholder.com/450x200" />
+					<!-- Card body -->
+					<div class="card-body">
+						<!-- Card title -->
+						<h5 class="card-title">HTML</h5>
+						<!-- Card text -->
+						<p class="card-text">
+							Hypertext Markup Language (HTML) is the standard markup language
+							for documents designed to be displayed in a web browser.
+						</p>
+						<!-- Button to open modal -->
+						<button class="btn btn-danger" data-toggle="modal" data-target="#playModal">
+							Play with
+						</button>
+					</div>
+					<!-- Card footer -->
+					<div class="card-footer">40h</div>
+				</div>
+			</div>
+			<!-- Card 2 -->
+			<div class="col-sm-4 col-12 mt-4">
+				<div class="card">
+					<!-- Card header -->
+					<div class="card-header">Coding</div>
+					<!-- Card image -->
+					<img class="card-img-top" src="https://via.placeholder.com/450x200" />
+					<!-- Card body -->
+					<div class="card-body">
+						<!-- Card title -->
+						<h5 class="card-title">CSS</h5>
+						<!-- Card text -->
+						<p class="card-text">
+							Cascading Style Sheets (CSS) is a style sheet language used for
+							describing the presentation of a document written in a markup
+							language like HTML.
+						</p>
+						<!-- Button to open modal -->
+						<button class="btn btn-danger" data-toggle="modal" data-target="#playModal">
+							Play with
+						</button>
+					</div>
+					<!-- Card footer -->
+					<div class="card-footer">35h</div>
+				</div>
+			</div>
+			<!-- Card 3 -->
+			<div class="col-sm-4 col-12 mt-4">
+				<div class="card">
+					<!-- Card header -->
+					<div class="card-header">Coding</div>
+					<!-- Card image -->
+					<img class="card-img-top" src="https://via.placeholder.com/450x200" />
+					<!-- Card body -->
+					<div class="card-body">
+						<!-- Card title -->
+						<h5 class="card-title">Javascript</h5>
+						<!-- Card text -->
+						<p class="card-text">
+							JavaScript, often abbreviated as JS, is a programming language
+							that conforms to the ECMAScript specification. not markup
+							language like HTML.
+						</p>
+						<!-- Button to open modal -->
+						<button class="btn btn-danger" data-toggle="modal" data-target="#playModal">
+							Play with
+						</button>
+					</div>
+					<!-- Card footer -->
+					<div class="card-footer">70h</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div id="playModal" tabindex="-1" role="dialog" aria-labelledby="playModal" aria-hidden="true" class="modal">
+		<div role="document" class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!-- Modal title -->
+					<h5 id="exampleModalLabel" class="modal-title">
+						Play with CodePen
+					</h5>
+					<!-- Close button -->
+					<button type="button" data-dismiss="modal" aria-label="Close" class="close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<!-- Modal body -->
+				<div class="modal-body">
+					<p>
+						CodePen is an online community for testing and showcasing
+						user-created HTML, CSS and JavaScript code snippets. It functions
+						as an online code editor and open-source learning environment,
+						where developers can create code snippets, called "pens," and test
+						them.
+					</p>
+					<p>
+						It was founded in 2012 by full-stack developers Alex Vazquez and
+						Tim Sabat and front-end designer Chris Coyier. Its employees work
+						remotely, rarely all meeting together in person.
+					</p>
+					<p>
+						CodePen is one of the largest communities for web designers and
+						developers to showcase their coding skills, with an estimated
+						330,000 registered users and 14.16 million monthly visitors.
+					</p>
+
+					<!-- Modal form -->
+					<form class="border-top pt-3">
+						<div class="form-group">
+							<h5>Connect</h5>
+						</div>
+						<!-- Username field -->
+						<div class="form-group row">
+							<label for="username" class="col-form-label col-sm-2">Username</label>
+							<div class="col-sm-10">
+								<input type="text" id="username" class="form-control" />
+							</div>
+						</div>
+						<!-- Password field -->
+						<div class="form-group row">
+							<label for="password" class="col-form-label col-sm-2">Password</label>
+							<div class="col-sm-10">
+								<input type="password" id="password" class="form-control" />
+							</div>
+						</div>
+						<!-- Submit button -->
+						<div class="form-group text-right flex-row-reverse">
+							<button type="submit" class="btn btn-danger">Connect</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
