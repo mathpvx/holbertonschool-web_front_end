@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<title>Exercise 12</title>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			function addPostRow(data) {
+				// Create a paragraph element with row-ID attribute
+				var paragraph = $("<p>").attr("id", "row-" + data.id);
+
+				// Create a span element with delete button
+				var deleteButton = $("<span>").text("(delete)").css("cursor", "pointer").click(function () {
+					deletePost(data.id);
+				});
+
+				// Create a span element with post information
+				var postInfo = $("<span>").text("Post created with id " + data.id + ", title: " + data.title + ", author: " + data.author);
+
+				// Append delete button and post information to the paragraph
+				paragraph.append(deleteButton, " ", postInfo);
+
+				// Append the paragraph to the body
+				$("body").append(paragraph);
+			}
+
+			function deletePost(id) {
+				// Send a DELETE query to the server's posts endpoint with the post ID
+				$.ajax({
+					url: "http://localhost:3000/posts/" + id,
+					type: "DELETE",
+					success: function () {
+						// If successful, remove the row from the body
+						$("#row-" + id).remove();
+					},
+					error: function () {
+						// If not successful, display an alert
+						alert("Post was not deleted");
+					}
+				});
+			}
+
+			// Call listPosts function when the page loads
+			listPosts();
+
+			function listPosts() {
+				// Make a GET request to the local server's posts endpoint
+				$.get("http://localhost:3000/posts", function (response) {
+					// For each post in the response, call addPostRow function
+					response.forEach(function (post) {
+						addPostRow(post);
+					});
+				})
+					.fail(function () {
+						// Display an alert if the server is unavailable
+						alert("Server Error");
+					});
+			}
+		});
+	</script>
+
+</body>
+
+</html>
