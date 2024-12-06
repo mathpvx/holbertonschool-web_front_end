@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Task 5</title>
+	<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+		integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+	<style>
+		.remove-button {
+			background-color: orange;
+			cursor: pointer;
+			padding: 2px 5px;
+			border: none;
+			color: white;
+		}
+	</style>
+</head>
+
+<body>
+	<script type="application/javascript">
+        $(document).ready(function() {
+            const createFamilyTree = () => {
+                $('body').append(
+                    $("<table border='1'>").append(
+                        $("<thead>").append(
+                            $("<tr>").append(
+                                $("<th>").text("Firstname"),
+                                $("<th>").text("Lastname"),
+                                $("<th>").text("Action")
+                            )
+                        ),
+                        $("<tbody>")
+                    )
+                );
+            };
+
+            const addNewMember = (firstName, lastName) => {
+                $("tbody").append(
+                    $("<tr>").append(
+                        $("<td>").text(firstName),
+                        $("<td>").text(lastName),
+                        $("<td>").append(
+                            $("<span>")
+                                .addClass("remove-button")
+                                .text("(x)")
+                                .click(function() {
+                                    $(this).closest("tr").remove();
+                                })
+                        )
+                    )
+                );
+            };
+
+            createFamilyTree();
+            
+            addNewMember("Guillaume", "Salva");
+            addNewMember("Arielle", "Snizt");
+            addNewMember("Fanette", "Snizt");
+            addNewMember("Gerard", "Snizt");
+            addNewMember("Victor", "Salva");
+        });
+	</script>
+</body>
+
+</html>
