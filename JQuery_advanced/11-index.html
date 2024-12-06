@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<title>Exercise 11</title>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			function addPostRow(data) {
+				// Create a paragraph element
+				var paragraph = $("<p>");
+
+				// Create a span element with post information
+				var span = $("<span>").text("Post created with id " + data.id + ", title: " + data.title + ", author: " + data.author);
+
+				// Append the span element to the paragraph
+				paragraph.append(span);
+
+				// Append the paragraph to the body
+				$("body").append(paragraph);
+			}
+
+			function listPosts() {
+				// Make a GET request to the local server's posts endpoint
+				$.get("http://localhost:3000/posts", function (response) {
+					// For each post in the response, call addPostRow function
+					response.forEach(function (post) {
+						addPostRow(post);
+					});
+				})
+					.fail(function () {
+						// Display an alert if the server is unavailable
+						alert("Server Error");
+					});
+			}
+
+			function buildForm() {
+				// Append a form element to the body
+				var form = $("<form>").appendTo("body");
+
+				// Append a div with label and input for author
+				$("<div>").appendTo(form)
+					.append($("<label>").attr("for", "author").text("Author"))
+					.append($("<input>").attr({ type: "text", id: "author" }));
+
+				// Append a div with label and textarea for title
+				$("<div>").appendTo(form)
+					.append($("<label>").attr("for", "title").text("Title"))
+					.append($("<textarea>").attr("id", "title"));
+
+				// Append an input of type submit
+				$("<input>").attr({ type: "submit", value: "Submit" }).appendTo(form);
+
+				// Handle form submission
+				form.submit(function (event) {
+					event.preventDefault();
+					sendForm();
+				});
+			}
+
+			function sendForm() {
+				// Add text "About to send the query to the API" after the form
+				$("<p>").text("About to send the query to the API").insertAfter("form");
+
+				// Create a data object with title and author attributes
+				var data = {
+					title: $("#title").val(),
+					author: $("#author").val()
+				};
+
+				// Send a POST query to the server's posts endpoint
+				$.post("http://localhost:3000/posts", data, function (response) {
+					// Call addPostRow function with data from the API
+					addPostRow(response);
+				})
+					.fail(function () {
+						// Display an alert if the POST query fails
+						alert("Error sending the POST query");
+					});
+			}
+
+			// Call listPosts and buildForm functions when the page loads
+			listPosts();
+			buildForm();
+		});
+	</script>
+
+</body>
+
+</html>
