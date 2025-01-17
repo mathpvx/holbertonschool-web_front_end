@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Session Shopping Cart</title>
+</head>
+
+<body>
+	<script>
+		// Check if the Web Storage is available
+		if (typeof (Storage) === "undefined") {
+			alert("Sorry, your browser does not support Web storage. Try again with a better one");
+		} else {
+			createStore();
+			displayCart();
+		}
+
+		// Function to create the store
+		function createStore() {
+			const availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+			const ul = document.createElement('ul');
+			document.body.appendChild(ul);
+
+			availableItems.forEach(item => {
+				const li = document.createElement('li');
+				li.textContent = item;
+				li.style.cursor = 'pointer';
+				li.onclick = function () { addItemToCart(item); };
+				ul.appendChild(li);
+			});
+		}
+
+		// Function to add an item to the cart
+		function addItemToCart(item) {
+			sessionStorage.setItem(item, true);
+			displayCart(); // Update cart after adding an item
+		}
+
+		// Function to display the cart
+		function displayCart() {
+			const items = Object.keys(sessionStorage);
+			if (items.length > 0) {
+				let message = document.getElementById('cartMessage');
+				if (!message) {
+					message = document.createElement('p');
+					message.id = 'cartMessage';
+					document.body.appendChild(message);
+				}
+				message.textContent = `You previously had ${items.length} items in your cart.`;
+			} else {
+				let message = document.getElementById('cartMessage');
+				if (message) message.remove(); // Remove message if no items are present
+			}
+		}
+	</script>
+</body>
+
+</html>
