@@ -1,0 +1,1 @@
+This is the readme file for the Cookies & local storage Holberton School project.
